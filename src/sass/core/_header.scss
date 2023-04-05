@@ -1,17 +1,49 @@
 header {
   position: sticky;
-  z-index: 999;
+  z-index: 1;
   top: 0;
   height: 0;
   .container {
-    padding: 37px 50px;
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(
+      180deg,
+      #8c8c8c 0%,
+      rgba(217, 217, 217, 0) 100%
+    );
+    width: 100%;
+    height: 152px;
     .header {
+      padding: 20px 50px;
       display: flex;
       justify-content: space-between;
+      position: relative;
       &__logo {
-        display: flex;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
         &-black {
           display: none;
+        }
+        &-white {
+          width: 130px;
+        }
+      }
+      &__left {
+        display: none;
+        &-list {
+          display: flex;
+          gap: 50px;
+          &-item {
+            a {
+              line-height: 18px;
+              font-weight: 700;
+              font-size: 15px;
+              text-decoration: none;
+              color: black;
+              text-transform: uppercase;
+            }
+          }
         }
       }
       &__center {
@@ -26,25 +58,6 @@ header {
             color: black;
             text-transform: uppercase;
           }
-        }
-      }
-      &__left {
-        &-list {
-          display: flex;
-          gap: 20px;
-          &-item:nth-child(-n + 2) {
-            position: relative;
-            &::after {
-              content: "";
-              position: absolute;
-              background-color: black;
-              width: 1px;
-              height: 100%;
-            }
-          }
-        }
-        .menu__list {
-          display: none;
         }
       }
       &__right {
@@ -73,6 +86,51 @@ header {
               }
             }
           }
+        }
+      }
+    }
+  }
+}
+
+.menu {
+  position: relative;
+  height: 0;
+  &__section {
+    padding: 20px 50px;
+    position: relative;
+    z-index: 3;
+    &-list {
+      display: flex;
+      gap: 48px;
+      &-item {
+        color: white;
+        font-size: 20px;
+        line-height: 30px;
+        text-align: left;
+        font-weight: 700;
+        &:nth-child(-n + 2) {
+          position: relative;
+          &::after {
+            content: "";
+            position: absolute;
+            background-color: white;
+            width: 1px;
+            height: 100%;
+            right: -24px;
+          }
+        }
+      }
+    }
+    .menu__list {
+      padding-top: 48px;
+      &-item {
+        color: white;
+        font-size: 20px;
+        line-height: 30px;
+        text-align: left;
+        font-weight: 700;
+        .subItem {
+          display: none;
         }
       }
     }
