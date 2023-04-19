@@ -1,11 +1,11 @@
 header {
   position: sticky;
-  z-index: 1;
+  z-index: 2;
   top: 0;
   height: 0;
   .container {
     position: relative;
-    z-index: 2;
+    z-index: 1;
     background: linear-gradient(
       180deg,
       #8c8c8c 0%,
@@ -64,11 +64,17 @@ header {
         &-list {
           display: flex;
           align-items: center;
+          gap: 20px;
           .header__item {
             color: white;
+            font-size: 15px;
+            position: relative;
             &-search {
+              cursor: pointer;
               margin-right: 20px;
+              width: 350px;
               display: flex;
+              position: relative;
               justify-content: space-between;
               &-icon {
                 width: 1.5rem;
@@ -77,12 +83,28 @@ header {
                 border-bottom: 1px solid white;
               }
               &-input {
+                cursor: pointer;
                 outline: none;
                 color: white;
+                width: 100%;
                 border: none;
                 border-bottom: 1px solid white;
                 background-color: transparent;
                 padding: 10px 20px;
+              }
+            }
+            &-heart {
+              position: relative;
+              &:after {
+                content: "";
+                position: absolute;
+                background-color: rgb(233, 65, 65);
+                width: 0.7rem;
+                height: 0.7rem;
+                border-radius: 100%;
+                top: -15px;
+                right: 0;
+                opacity: 1;
               }
             }
           }
@@ -94,11 +116,15 @@ header {
 
 .menu {
   position: relative;
+  width: 40%;
+  color: black;
   height: 0;
   &__section {
+    background-color: transparent;
     padding: 20px 50px;
     position: relative;
     z-index: 3;
+    height: 100vh;
     &-list {
       display: flex;
       gap: 48px;
@@ -126,11 +152,48 @@ header {
       &-item {
         color: white;
         font-size: 20px;
-        line-height: 30px;
-        text-align: left;
+        line-height: 40px;
         font-weight: 700;
         .subItem {
-          display: none;
+          display: flex;
+          &__list {
+            padding-left: 20px;
+            display: none;
+          }
+          &-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            position: relative;
+            top: 20px;
+            left: 10px;
+            display: block;
+            transform: translateY(-50%);
+            &:before,
+            &:after {
+              content: "";
+              position: absolute;
+              background-color: white;
+              width: 70%;
+              height: 1px;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              transition-duration: 200ms;
+            }
+            &:after {
+              transform: translate(-50%, -50%) rotate(90deg);
+            }
+          }
+          &.active {
+            .subItem__list.active {
+              display: block;
+            }
+            .subItem-icon {
+              &:after {
+                transform: translate(-50%, -50%) rotate(0deg);
+              }
+            }
+          }
         }
       }
     }

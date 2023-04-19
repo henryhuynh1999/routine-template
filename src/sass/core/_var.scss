@@ -1,23 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap");
-/*font families*/
-$font-stack: "Roboto Condensed", sans-serif;
-$font-main: ir;
-
-//============================================================//
-
-/*BOXED LAYOUT*/
-$container-max-width: 100%;
-$container-width: 1300px;
-
-/*GRID - media queries breakpoints*/
-$xxs-min: 390px;
-$xs-min: 768px;
-$sm-min: 992px;
-$md-min: 1200px;
-$lg-min: 1600px;
-
-$xxs-max: ($xxs-min - 1); // Small Mobile
-$xs-max: ($xs-min - 1); // Mobile
-$sm-max: ($sm-min - 1); // Tablet
-$md-max: ($md-min - 1); // Desktop
-$lg-max: ($lg-min - 1); // Large Desktop
+html {
+  font-family: "Roboto Condensed", sans-serif;
+}

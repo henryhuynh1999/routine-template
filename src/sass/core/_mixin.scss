@@ -1,0 +1,11 @@
+@mixin transform($args) {
+  transform: $args;
+  -webkit-transform: $args;
+  -moz-transform: $args;
+  -ms-transform: $args;
+  -o-transform: $args;
+}
+@mixin size($w, $h: $w) {
+  width: $w;
+  height: $h;
+}
