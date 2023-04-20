@@ -1,5 +1,8 @@
 .product {
   padding: 100px 60px;
+  @include xs {
+    padding: 30px 20px;
+  }
   &-title {
     margin: 0 auto 37px;
     width: fit-content;
@@ -9,7 +12,11 @@
       font-size: 36px;
       line-height: 42px;
       font-weight: 900;
-      z-index: 99;
+      z-index: 7;
+      @include xs {
+        font-size: 24px;
+        line-height: 28px;
+      }
       &:after {
         content: "";
         display: block;
@@ -25,13 +32,13 @@
   &-info {
     .product-list {
       display: flex;
-      position: relative;
       gap: 30px;
-      .product-item {
+      position: relative;
+      .slick-track {
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        gap: 20px;
         .product__wrap {
+          width: auto;
           position: relative;
           overflow: hidden;
           &-img {
@@ -76,6 +83,9 @@
               cursor: pointer;
               position: relative;
               width: fit-content;
+              // @include xs {
+              //   display: none;
+              // }
               img {
                 width: 3rem;
                 height: 3rem;
@@ -106,6 +116,64 @@
                 }
               }
             }
+          }
+        }
+      }
+      @include xxs {
+        .slick-track {
+          .product__wrap-banner {
+            display: none;
+          }
+        }
+      }
+      .slick-arrow {
+        all: unset;
+        font-size: 24px;
+        cursor: pointer;
+      }
+      .slick-dots {
+        display: flex;
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        .slick-active {
+          button {
+            background-color: #2b2b2b;
+          }
+        }
+        li {
+          button {
+            width: 10px;
+            height: 10px;
+            border: none;
+            background-color: rgba(120, 120, 120, 0.8);
+            border-radius: 50%;
+            margin: 0 5px;
+            font-size: 0;
+            cursor: pointer;
+          }
+        }
+      }
+      .slick-prev,
+      .slick-next {
+        display: flex;
+        align-items: center;
+      }
+      .slick-disabled {
+        color: #ccc;
+      }
+      @include sm {
+        .slick-track {
+          .product-preview {
+          }
+          .product-price {
+            color: yellow;
+          }
+        }
+        .slick-slide {
+          div {
+            position: relative;
           }
         }
       }

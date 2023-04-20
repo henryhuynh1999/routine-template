@@ -2,7 +2,8 @@ body {
   position: relative;
 }
 .marquee {
-  font-size: 1.2rem;
+  font-size: 2rem;
+  padding: 5px 0;
   font-weight: 700;
   ul {
     position: relative;
@@ -12,12 +13,12 @@ body {
     display: flex;
     white-space: nowrap;
     text-align: center;
-    background-color: white;
+    background-color: #2b2b2b;
     li {
-      animation: marquee 5s linear infinite;
+      animation: marquee 10s linear infinite;
       animation-play-state: running;
       padding: 5px 12.5px 12px;
-      color: black;
+      color: white;
     }
     &:hover {
       li {
@@ -25,17 +26,16 @@ body {
       }
     }
   }
-  svg {
-    width: 1rem;
-    height: 1rem;
-    text-align: center;
-    margin: 0 10px 0 100px;
-  }
   strong {
     font-weight: 700;
+    color: #fde74c;
+    &:before,
+    &:after {
+      content: " / ";
+      color: white;
+    }
   }
 }
-
 @keyframes marquee {
   0% {
     transform: translate(0, 0);
@@ -51,6 +51,9 @@ body {
     img {
       width: 100%;
       height: 100vh;
+      @include sm {
+        height: auto;
+      }
     }
   }
   .slick-dots {
@@ -82,7 +85,7 @@ body {
   .popup__list {
     &-user {
       display: none;
-      position: absolute;
+      position: fixed;
       background: #fff;
       box-shadow: 0px 6px 4px rgba(179, 179, 179, 0.25);
       top: 120px;
@@ -90,6 +93,9 @@ body {
       z-index: 50;
       width: 200px;
       padding: 25px 20px 20px;
+      @include xs {
+        right: 75px;
+      }
       .popup__list-btn {
         display: flex;
         flex-direction: column;
@@ -151,23 +157,109 @@ body {
       right: 0;
       bottom: 0;
       background-color: white;
+      @include sm {
+        width: 60%;
+      }
+      @include xs {
+        width: 70%;
+      }
+      @include xxs {
+        width: 100%;
+      }
+      // transition: all 0.3s ease;
+      // transform: translate(100%, 0);
       &-content {
         padding: 40px 50px;
         &-title {
           display: flex;
           justify-content: space-between;
           .content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
             font-size: 16px;
+            font-weight: 700;
+            &-icon {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 10px;
+              svg {
+                width: 1.3rem;
+                height: 1.3rem;
+              }
+            }
           }
           &-close {
             font-size: 37px;
             line-height: 21px;
             text-transform: uppercase;
             color: #8c8c8c;
+          }
+        }
+        &-list {
+          margin: 20px 0;
+          font-size: 13px;
+          background-color: #edcb93;
+          color: #6f4400;
+          padding: 11px 40px;
+          @include xs {
+            padding: 7px 15px;
+          }
+        }
+      }
+    }
+    &-cart {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      width: 30%;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background-color: white;
+      @include sm {
+        width: 60%;
+      }
+      @include xs {
+        width: 70%;
+      }
+      @include xxs {
+        width: 100%;
+      }
+      // transition: all 0.3s ease;
+      // transform: translate(100%, 0);
+      &-content {
+        padding: 40px 50px;
+        &-title {
+          display: flex;
+          justify-content: space-between;
+          .content {
+            font-size: 16px;
+            font-weight: 700;
+            &-icon {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 10px;
+              svg {
+                width: 1.3rem;
+                height: 1.3rem;
+              }
+            }
+          }
+          &-close {
+            font-size: 37px;
+            line-height: 21px;
+            text-transform: uppercase;
+            color: #8c8c8c;
+          }
+        }
+        &-list {
+          margin: 20px 0;
+          font-size: 13px;
+          background-color: #ffd8d8;
+          color: #f20e0e;
+          padding: 11px 40px;
+          @include xs {
+            padding: 7px 15px;
           }
         }
       }
@@ -252,13 +344,15 @@ body {
           margin: 0 auto;
           width: 100%;
           padding: 20px;
-          outline: none;
-          border: none;
-          background-color: black;
-          color: white;
+          border: 1px solid black;
           font-weight: 700;
           text-transform: uppercase;
           cursor: pointer;
+          background-color: transparent;
+          &:hover {
+            color: white;
+            background-color: black;
+          }
         }
       }
     }

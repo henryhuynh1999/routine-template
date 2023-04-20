@@ -1,15 +1,22 @@
 .middle {
   .middle-wrap {
-    height: 100vh;
     width: 100%;
     text-decoration: none;
     list-style-type: none;
     background-color: white;
     padding: 35px 0;
+    @include sm {
+      padding: 15px 0;
+    }
     .middle__list {
       display: flex;
       gap: 40px;
       padding: 0 50px;
+      @include xs {
+        flex-wrap: wrap;
+        padding: 0 20px;
+        gap: 20px;
+      }
       .middle__item {
         position: relative;
         flex-basis: 1;

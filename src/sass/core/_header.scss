@@ -1,11 +1,11 @@
 header {
   position: sticky;
-  z-index: 2;
+  z-index: 10;
   top: 0;
   height: 0;
   .container {
     position: relative;
-    z-index: 1;
+    z-index: 9;
     background: linear-gradient(
       180deg,
       #8c8c8c 0%,
@@ -18,30 +18,69 @@ header {
       display: flex;
       justify-content: space-between;
       position: relative;
+      @include xs {
+        padding: 15px 10px;
+      }
+      &.active {
+        background-color: white;
+      }
       &__logo {
         position: absolute;
+        cursor: pointer;
         left: 50%;
         transform: translate(-50%, 0);
         &-black {
           display: none;
+          width: 130px;
+          position: absolute;
+          cursor: pointer;
+          left: 50%;
+          transform: translate(-50%, 0);
         }
         &-white {
           width: 130px;
         }
+        @include xs {
+          left: 30%;
+          top: 23%;
+          &-black {
+            display: none;
+            width: 110px;
+          }
+          &-white {
+            display: block;
+            width: 110px;
+          }
+        }
       }
       &__left {
-        display: none;
+        position: absolute;
+        left: 5%;
+        @include sm {
+          display: none;
+        }
         &-list {
           display: flex;
           gap: 50px;
+          margin-top: 10px;
           &-item {
+            color: black;
+            text-transform: uppercase;
+            font-weight: 700;
+            line-height: 18px;
             a {
-              line-height: 18px;
-              font-weight: 700;
-              font-size: 15px;
               text-decoration: none;
-              color: black;
-              text-transform: uppercase;
+            }
+            &:nth-child(-n + 2) {
+              position: relative;
+              &::after {
+                content: "";
+                position: absolute;
+                background-color: black;
+                width: 1px;
+                height: 100%;
+                right: -24px;
+              }
             }
           }
         }
@@ -61,6 +100,9 @@ header {
         }
       }
       &__right {
+        // @include xs {
+        //   display: none;
+        // }
         &-list {
           display: flex;
           align-items: center;
@@ -69,6 +111,7 @@ header {
             color: white;
             font-size: 15px;
             position: relative;
+            cursor: pointer;
             &-search {
               cursor: pointer;
               margin-right: 20px;
@@ -76,11 +119,16 @@ header {
               display: flex;
               position: relative;
               justify-content: space-between;
+              align-items: center;
+              @include md {
+                width: 100%;
+              }
               &-icon {
-                width: 1.5rem;
-                height: 1.5rem;
+                width: 1.7rem;
+                height: 1.7rem;
                 padding: 10px 0;
-                border-bottom: 1px solid white;
+                position: absolute;
+                left: 0;
               }
               &-input {
                 cursor: pointer;
@@ -90,7 +138,10 @@ header {
                 border: none;
                 border-bottom: 1px solid white;
                 background-color: transparent;
-                padding: 10px 20px;
+                padding: 10px 0 10px 40px;
+                @include md {
+                  display: none;
+                }
               }
             }
             &-heart {
@@ -105,8 +156,42 @@ header {
                 top: -15px;
                 right: 0;
                 opacity: 1;
+                @include xs {
+                  top: -10px;
+                }
               }
             }
+            @include xs {
+              :is(&-heart, &-search, &-cart, &-user) {
+                svg {
+                  width: 1.4rem;
+                  height: 1.4rem;
+                }
+              }
+            }
+          }
+        }
+      }
+      .nav__mobile {
+        position: relative;
+        width: 2rem;
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        @include xs {
+          display: flex;
+        }
+        &-line {
+          cursor: pointer;
+          display: block;
+          height: 3px;
+          width: 70%;
+          background-color: white;
+          &.active {
+            background-color: black;
+          }
+          &:nth-child(2) {
+            width: 100%;
           }
         }
       }
@@ -119,17 +204,24 @@ header {
   width: 40%;
   color: black;
   height: 0;
+  @include xs {
+    display: none;
+  }
   &__section {
     background-color: transparent;
     padding: 20px 50px;
     position: relative;
-    z-index: 3;
+    z-index: 12;
     height: 100vh;
     &-list {
       display: flex;
       gap: 48px;
+      @include sm {
+        gap: 35px;
+      }
       &-item {
         color: white;
+        cursor: pointer;
         font-size: 20px;
         line-height: 30px;
         text-align: left;
@@ -154,11 +246,17 @@ header {
         font-size: 20px;
         line-height: 40px;
         font-weight: 700;
+        cursor: pointer;
         .subItem {
           display: flex;
           &__list {
             padding-left: 20px;
             display: none;
+            &-item {
+              &:hover {
+                color: rgb(235, 248, 52);
+              }
+            }
           }
           &-icon {
             width: 1.5rem;
@@ -197,5 +295,10 @@ header {
         }
       }
     }
+  }
+}
+@include xs {
+  .menu {
+    display: none;
   }
 }
