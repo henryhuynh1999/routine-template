@@ -155,6 +155,35 @@ body .--line:after {
   z-index: -1;
 }
 
+.bar {
+  position: fixed;
+  top: 40%;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 999;
+  padding: 20px 15px;
+  background-color: white;
+  border-radius: 10px 0 0 10px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.3s ease-in-out;
+}
+.bar:hover {
+  opacity: 1;
+}
+.bar:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 1px;
+  background-color: #958787;
+}
+
 .marquee {
   font-size: 2rem;
   padding: 5px 0;
@@ -230,7 +259,6 @@ body .--line:after {
 }
 
 .popup .popup__list-user {
-  display: none;
   position: fixed;
   background: #fff;
   box-shadow: 0px 6px 4px rgba(179, 179, 179, 0.25);
@@ -239,6 +267,11 @@ body .--line:after {
   z-index: 50;
   width: 200px;
   padding: 25px 20px 20px;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+.popup .popup__list-user.active {
+  opacity: 1;
 }
 @media screen and (max-width: 767px) {
   .popup .popup__list-user {
@@ -297,7 +330,6 @@ body .--line:after {
   cursor: pointer;
 }
 .popup .popup__list-like {
-  display: none;
   position: fixed;
   z-index: 999;
   width: 30%;
@@ -305,6 +337,11 @@ body .--line:after {
   right: 0;
   bottom: 0;
   background-color: white;
+  transform: translate(100%, 0);
+  transition: transform 0.3s ease-in-out;
+}
+.popup .popup__list-like.active {
+  transform: translate(0, 0);
 }
 @media screen and (max-width: 991px) {
   .popup .popup__list-like {
@@ -345,6 +382,7 @@ body .--line:after {
 .popup .popup__list-like-content-title-close {
   font-size: 37px;
   line-height: 21px;
+  cursor: pointer;
   text-transform: uppercase;
   color: #8c8c8c;
 }
@@ -361,7 +399,6 @@ body .--line:after {
   }
 }
 .popup .popup__list-cart {
-  display: none;
   position: fixed;
   z-index: 999;
   width: 30%;
@@ -369,6 +406,8 @@ body .--line:after {
   right: 0;
   bottom: 0;
   background-color: white;
+  transform: translate(100%, 0);
+  transition: all 0.3s ease-in-out;
 }
 @media screen and (max-width: 991px) {
   .popup .popup__list-cart {
@@ -424,8 +463,10 @@ body .--line:after {
     padding: 7px 15px;
   }
 }
+.popup .popup__list-cart.active {
+  transform: translate(0, 0);
+}
 .popup .popup__list-search {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -433,7 +474,11 @@ body .--line:after {
   height: 300px;
   background-color: white;
   z-index: 999;
+  transform: translate(0, -100%);
   transition: all 0.3s ease;
+}
+.popup .popup__list-search.active {
+  transform: translate(0, 0);
 }
 .popup .popup__list-search-wrap {
   display: flex;

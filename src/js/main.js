@@ -58,30 +58,30 @@ activeSub();
 
 // Modal ...
 $(".header__item-search").on("click", () => {
-  $(".popup .popup__list-search").toggle();
+  $(".popup .popup__list-search").toggleClass('active');
 });
 $(".popup .popup__list-search-close-icon").on("click", () => {
-  $(".popup .popup__list-search").toggle();
+  $(".popup .popup__list-search").removeClass('active');
 });
 $(".header__item-user").on("click", () => {
-  $(".popup .popup__list-user").toggle();
+  $(".popup .popup__list-user").toggleClass('active');
 });
 $(".header__item-heart").on("click", () => {
-  $(".popup .popup__list-like").toggle();
+  $(".popup .popup__list-like").toggleClass('active');
 });
 $(".header__item-cart").on("click", () => {
-  $(".popup .popup__list-cart").toggle();
+  $(".popup .popup__list-cart").toggleClass('active');
 });
 $(".popup .popup__list-like .popup__list-like-content-title-close").on(
   "click",
   () => {
-    $(".popup .popup__list-like").toggle();
+    $(".popup .popup__list-like").removeClass('active');
   }
 );
 $(".popup .popup__list-cart .popup__list-cart-content-title-close").on(
   "click",
   () => {
-    $(".popup .popup__list-cart").toggle();
+    $(".popup .popup__list-cart").removeClass('active');
   }
 );
 $(".header__left").hide();
